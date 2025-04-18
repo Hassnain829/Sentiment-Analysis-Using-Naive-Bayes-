@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sentiment Analysis</title>
+<link rel="stylesheet" type="text/css" href="/static/styles.css">
+  </head>
+
+  <body>
+    <h1>Sentiment Analysis</h1>
+    <form method="post">
+      <label for="input">Enter a sentence:</label><br>
+      <input type="text" id="input" name="input"><br>
+      <button type="submit">Submit</button>
+      <button type="button" id="clear-button" onclick="clearResults()">Clear</button>
+    </form>
+    {% if message %}
+    <div id="results">
+      <h2>{{ message }}</h2>
+      <p class="{{ sentiment }}">{{ emoji }}</p>
+      <p class="{{ sentiment }}">Sentiment: {{ sentiment }}</p>
+      <p>Positive Probability: {{ probabilities[2] }}</p>
+      <p>Neutral Probability: {{ probabilities[1] }}</p>
+      <p>Negative Probability: {{ probabilities[0] }}</p>
+    </div>
+    {% endif %}
+
+    <script>
+      // Function to clear the results section
+      function clearResults() {
+        document.getElementById("results").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
